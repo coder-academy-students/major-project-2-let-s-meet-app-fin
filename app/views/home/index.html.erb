@@ -2,3 +2,9 @@
   <h1>Let's Meet</h1>
   <p>for Coffee <%= link_to 'Go !', new_event_path, class: "btn btn-primary btn-lg" %>
 </div>
+
+<%- unless @geolocation %>
+<script>
+  getGeoLocation();
+</script>
+<%- end %>
