@@ -16,9 +16,11 @@
       <ul class="nav navbar-nav navbar-right">
 
         <% if user_signed_in? %>
+
+        <li><%= image_tag(@user.avatar_url, style: "width:30px;height:auto;margin-top:10px;",
+                class:"img-rounded hidden-xs") if @user.avatar? %></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-             aria-haspopup="true" aria-expanded="false"><%= current_user.email %>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.nick_name %>
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
