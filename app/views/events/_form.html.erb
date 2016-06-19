@@ -12,12 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
     <%= f.label :location_place_id %><br>
     <%= f.text_field :location_place_id %>
+  </div>
+  <div class="field">
+    <% @nearby_users.each do |user| %>
+    <%= user.email %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :start_date_time %><br>
