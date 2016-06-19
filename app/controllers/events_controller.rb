@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :search_nearby, only: [:new, :edit]
   before_action :authenticate_user!
 
   # GET /events
@@ -16,12 +17,10 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
-    @nearby_users = User.all
   end
 
   # GET /events/1/edit
   def edit
-    @nearby_users = User.all
   end
 
   # POST /events
@@ -74,5 +73,12 @@ class EventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:user_id, :location_place_id, :start_date_time, :end_date_time, :message)
+    end
+
+    def search_nearby
+      @nearby_users = User.all
+      @client = GooglePlaces::Client.new("AIzaSyCzEHBQ9YVnGZZYYT_P4N1Am6TgZ7r0I0E")
+      @locations = @client.spots(@user.latitude, @user.longitude, :types => 'cafe', :radius => 300)
+      # @locations = []
     end
 end

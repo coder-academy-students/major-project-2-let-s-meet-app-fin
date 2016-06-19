@@ -1,38 +1,57 @@
 <%= form_for(@event) do |f| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+<% if @event.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@event.errors.count, "error") %>
+    prohibited this event from being saved:</h2>
 
-      <ul>
-      <% @event.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :location_place_id %><br>
-    <%= f.text_field :location_place_id %>
-  </div>
-  <div class="field">
-    <% @nearby_users.each do |user| %>
-    <%= user.email %>
+  <ul>
+    <% @event.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
     <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="text-center heading">
+  <h1>Let's Meet</h1>
+  <i class="fa fa-coffee"></i><br>
+  <i class="fa fa-at"></i>
+</div>
+
+<div class="scroll-container">
+  <% @locations.each do |location| %>
+  <div class="card">
+    <label>
+      <%= f.radio_button :location_place_id, location.reference %><br>
+      <% if location.photos[0] %>
+        <%= image_tag(location.photos[0].fetch_url(100), :alt => location.name) %>
+      <% else %>
+        <%= image_tag('no-image-available.jpeg', :alt => location.name) %>
+      <% end %>
+      <p><%= location.name %></p>
+    </label>
   </div>
-  <div class="field">
-    <%= f.label :start_date_time %><br>
-    <%= f.datetime_select :start_date_time %>
-  </div>
-  <div class="field">
-    <%= f.label :end_date_time %><br>
-    <%= f.datetime_select :end_date_time %>
-  </div>
-  <div class="field">
-    <%= f.label :message %><br>
-    <%= f.text_area :message %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <% end %>
+</div>
+
+<div class="form-group">
+  <% @nearby_users.each do |user| %>
+  <%= user.email %>
+  <% end %>
+</div>
+<div class="form-group">
+  <%= f.label :start_date_time %><br>
+  <%= f.datetime_select :start_date_time %>
+</div>
+<div class="form-group">
+  <%= f.label :end_date_time %><br>
+  <%= f.datetime_select :end_date_time %>
+</div>
+<div class="form-group">
+  <%= f.label :message %><br>
+  <%= f.text_area :message %>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>
 <% end %>

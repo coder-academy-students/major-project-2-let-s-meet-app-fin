@@ -6,6 +6,8 @@ gem 'rails', '4.2.6'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 gem 'carrierwave'
+gem 'google_places'
+gem "font-awesome-rails"
 # Use postgres as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets

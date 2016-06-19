@@ -1,3 +1,42 @@
 // Place all the styles related to the Events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.card {
+  height: 225px;
+  width: 150px;
+  border: 1px solid #e5e5e5;
+  display: inline-flex;
+  white-space: normal;
+
+  input {
+    // display: none;
+  }
+
+  label {
+    cursor: pointer;
+  }
+
+  &:hover{
+    border: 1px solid darkgrey;
+  }
+
+  img {
+    height: 150px;
+    width: 150px;
+  }
+}
+
+.scroll-container {
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+.heading {
+  i.fa-at {
+    font-size: 50px;
+  }
+
+  i.fa-coffee {
+    font-size: 150px;
+  }
+}
