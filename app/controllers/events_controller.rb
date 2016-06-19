@@ -21,6 +21,7 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    @nearby_users = User.all
   end
 
   # POST /events

@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
+  get 'user/profile'
+
   resources :events
+
+  resources :user, only: [:edit] do
+    collection do
+      patch 'update_profile'
+    end
+  end
+
   devise_for :users
   get 'home/index'
 

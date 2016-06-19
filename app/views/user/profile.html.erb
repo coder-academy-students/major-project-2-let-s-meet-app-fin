@@ -1,0 +1,24 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <h1>Your Profile</h1>
+  <%= form_for(@user, :url => { :action => "update_profile"}) do |f| %>
+  <div class="form-group">
+    <%= f.label "Nick Name" %>
+    <%= f.text_field :nick_name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label "First Name" %>
+    <%= f.text_field :first_name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label "Last Name" %>
+    <%= f.text_field :last_name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label "Email" %>
+    <%= f.text_field :email, disabled: true, class: "form-control" %>
+  </div>
+
+  <%= f.submit class:"btn btn-primary" %>
+  <% end %>
+</div>
