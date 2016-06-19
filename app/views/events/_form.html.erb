@@ -34,11 +34,22 @@
   <% end %>
 </div>
 
-<div class="form-group">
+<div class="text-center">
+  <h1>With</h1>
+</div>
+
+<div class="scroll-container">
   <% @nearby_users.each do |user| %>
-  <%= user.email %>
+  <div class="card">
+    <label>
+      <%= check_box_tag :guest_ids, user.id, @event.guests.include?(user), :name => 'guest_ids[]' %><br>
+      <%= image_tag(user.avatar_url, class:"img-rounded") if @user.avatar? %>
+      <p><%= user.nick_name %></p>
+    </label>
+  </div>
   <% end %>
 </div>
+
 <div class="form-group">
   <%= f.label :start_date_time %><br>
   <%= f.datetime_select :start_date_time %>

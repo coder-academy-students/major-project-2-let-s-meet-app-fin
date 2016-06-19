@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160619081818) do
+ActiveRecord::Schema.define(version: 20160619171353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 20160619081818) do
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
+
+  create_table "invitations", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "guest_id"
+    t.boolean  "is_going"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "invitations", ["event_id"], name: "index_invitations_on_event_id", using: :btree
+  add_index "invitations", ["guest_id"], name: "index_invitations_on_guest_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -53,4 +64,6 @@ ActiveRecord::Schema.define(version: 20160619081818) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "events", "users"
+  add_foreign_key "invitations", "events"
+  add_foreign_key "invitations", "users", column: "guest_id"
 end

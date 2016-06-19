@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :search_nearby, only: [:new, :edit]
-  before_action :authenticate_user!
 
   # GET /events
   # GET /events.json
@@ -28,9 +28,14 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user_id = current_user.id
+    saved_event = @event.save
+
+    guest_id_params.each do |guest_id|
+      @event.invitations.create(guest_id: guest_id, is_going: false)
+    end
 
     respond_to do |format|
-      if @event.save
+      if saved_event
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
@@ -73,6 +78,10 @@ class EventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:user_id, :location_place_id, :start_date_time, :end_date_time, :message)
+    end
+
+    def guest_id_params
+      params.require(:guest_ids)
     end
 
     def search_nearby
