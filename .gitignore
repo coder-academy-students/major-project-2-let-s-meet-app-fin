@@ -18,3 +18,6 @@
 
 # Ignore upload files
 /public/uploads
+
+# Ignore environment variable config
+/config/local_env.yml

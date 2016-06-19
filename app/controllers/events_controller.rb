@@ -86,7 +86,7 @@ class EventsController < ApplicationController
 
     def search_nearby
       @nearby_users = User.all
-      @client = GooglePlaces::Client.new("AIzaSyCzEHBQ9YVnGZZYYT_P4N1Am6TgZ7r0I0E")
+      @client = GooglePlaces::Client.new(ENV["GOOGLE_PLACES_API_KEY"])
       @locations = @client.spots(@user.latitude, @user.longitude, :types => 'cafe', :radius => 300)
       # @locations = []
     end
