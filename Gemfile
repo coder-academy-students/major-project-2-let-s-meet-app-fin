@@ -8,6 +8,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'google_places'
 gem "font-awesome-rails"
+gem 'puma'
 # Use postgres as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
