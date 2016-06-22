@@ -26,7 +26,7 @@
       <% if location.photos[0] %>
         <%= image_tag(location.photos[0].fetch_url(100), :alt => location.name) %>
       <% else %>
-        <%= image_tag('no-image-available.jpeg', :alt => location.name) %>
+        <%= image_tag('no-image.jpg', :alt => location.name) %>
       <% end %>
       <p><%= location.name %></p>
     </label>
