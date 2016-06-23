@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :search_nearby, only: [:new, :edit]
+  before_action :get_geo_location, :search_nearby, only: [:new, :edit]
 
   # GET /events
   # GET /events.json
