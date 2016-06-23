@@ -1,29 +1,62 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @event.user.email %>
-</p>
+<div class="container">
+  <h1>Let's Meet at <%= @location.name %>!</h1>
+  <% if @location.photos[0] %>
+    <%= image_tag(@location.photos[0].fetch_url(500), :alt => @location.name) %>
+  <% else %>
+    <%= image_tag('no-image.jpg', :alt => @location.name) %>
+  <% end %>
+  <br>
 
-<p>
-  <strong>Location place:</strong>
-  <%= @event.location_place_id %>
-</p>
+  <div class="row">
+    <div class="col-md-2">
+      <h2>Host</h2>
+      <div class="card">
+        <label>
+          <%= image_tag(@event.user.avatar_url, class:"img-rounded") if @event.user.avatar? %>
+          <p><%= @event.user.nick_name %></p>
+        </label>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <h2>Invited Guests</h2>
+      <div class="scroll-container">
+        <% @event.guests.each do |user| %>
+        <div class="card">
+          <label>
+            <%= image_tag(user.avatar_url, class:"img-rounded") if user.avatar? %>
+            <p><%= user.nick_name %></p>
+          </label>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Start date time:</strong>
-  <%= @event.start_date_time %>
-</p>
+  <p>
+    <strong>Location:</strong>
+    <%= @event.location_name %>
+  </p>
 
-<p>
-  <strong>End date time:</strong>
-  <%= @event.end_date_time %>
-</p>
+  <p>
+    <strong>Start time:</strong>
+    <%= @event.start_date_time.to_formatted_s(:short) %>
+  </p>
 
-<p>
-  <strong>Message:</strong>
-  <%= @event.message %>
-</p>
+  <p>
+    <strong>End time:</strong>
+    <%= @event.end_date_time.to_formatted_s(:short) %>
+  </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+  <p>
+    <strong>Message:</strong>
+    <%= @event.message %>
+  </p>
+
+  <%= link_to 'Back', "/" %>
+
+</div>
+
+<!-- <%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %> -->

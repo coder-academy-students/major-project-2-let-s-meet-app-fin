@@ -24,7 +24,7 @@
 
     <% if @my_event %>
     <tr>
-      <td>Coffee</td>
+      <td><%= link_to 'Coffee', @my_event %></td>
       <td><%= @my_event.start_date_time.to_formatted_s(:short) %></td>
       <td><%= @my_event.end_date_time.to_formatted_s(:short) %></td>
       <td><%= @my_event.location_name %></td>
@@ -34,7 +34,7 @@
 
     <% @invitations.each do |invitation| %>
     <tr>
-      <td>Coffee</td>
+      <td><%= link_to 'Coffee', invitation.event %></td>
       <td><%= invitation.event.start_date_time.to_formatted_s(:short) %></td>
       <td><%= invitation.event.end_date_time.to_formatted_s(:short) %></td>
       <td><%= invitation.event.location_name %></td>

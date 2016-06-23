@@ -43,7 +43,7 @@
   <div class="card">
     <label>
       <%= check_box_tag :guest_ids, user.id, @event.guests.include?(user), :name => 'guest_ids[]' %><br>
-      <%= image_tag(user.avatar_url, class:"img-rounded") if @user.avatar? %>
+      <%= image_tag(user.avatar_url, class:"img-rounded") if user.avatar? %>
       <p><%= user.nick_name %></p>
     </label>
   </div>

@@ -12,6 +12,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @location = retrieve_location(@event.location_place_id)
   end
 
   # GET /events/new
@@ -96,8 +97,12 @@ class EventsController < ApplicationController
     end
 
     def retrieve_location_name(location_place_id)
+      location = retrieve_location(location_place_id)
+      return location.name
+    end
+
+    def retrieve_location(location_place_id)
       @client = GooglePlaces::Client.new(ENV["GOOGLE_PLACES_API_KEY"])
       location = @client.spot(location_place_id)
-      return location.name
     end
 end
