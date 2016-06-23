@@ -4,6 +4,47 @@
   <%= link_to 'Go !', new_event_path, class: "btn btn-primary btn-lg" %>
 </div>
 
+<% if user_signed_in? %>
+<h2 class="text-center">Events</h2><br>
+<div class="container table-responsive">
+  <table class="table table-hover">
+    <tr>
+      <th>Event</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Location</th>
+      <th>RSVP</th>
+    </tr>
+
+    <% if @invitations.empty? && @my_event.nil? %>
+    <tr>
+      <td colspan="5" class="text-center">You currently don't have any invitations.</td>
+    </tr>
+    <% end %>
+
+    <% if @my_event %>
+    <tr>
+      <td>Coffee</td>
+      <td><%= @my_event.start_date_time.to_formatted_s(:short) %></td>
+      <td><%= @my_event.end_date_time.to_formatted_s(:short) %></td>
+      <td><%= @my_event.location_name %></td>
+      <td><%= select_tag "is_going", options_for_select([ "Yes"]), disabled: true, class: "form_control" %></td>
+    </tr>
+    <% end %>
+
+    <% @invitations.each do |invitation| %>
+    <tr>
+      <td>Coffee</td>
+      <td><%= invitation.event.start_date_time.to_formatted_s(:short) %></td>
+      <td><%= invitation.event.end_date_time.to_formatted_s(:short) %></td>
+      <td><%= invitation.event.location_name %></td>
+      <td><%= select_tag "is_going", options_for_select([ "Yes", "No"]), class: "form_control" %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+<% end %>
+
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="pull-right">
   <input type="hidden" name="cmd" value="_s-xclick">
   <input type="hidden" name="hosted_button_id" value="2EWNW3L8QXWZU">

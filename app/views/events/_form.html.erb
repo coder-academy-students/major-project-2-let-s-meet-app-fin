@@ -22,7 +22,7 @@
   <% @locations.each do |location| %>
   <div class="card">
     <label>
-      <%= f.radio_button :location_place_id, location.reference %><br>
+      <%= f.radio_button :location_place_id, location.place_id %><br>
       <% if location.photos[0] %>
         <%= image_tag(location.photos[0].fetch_url(100), :alt => location.name) %>
       <% else %>

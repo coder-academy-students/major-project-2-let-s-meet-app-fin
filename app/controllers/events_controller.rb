@@ -28,6 +28,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user_id = current_user.id
+    @event.location_name = retrieve_location_name(@event.location_place_id)
     saved_event = @event.save
 
     guest_id_params.each do |guest_id|
@@ -86,8 +87,17 @@ class EventsController < ApplicationController
 
     def search_nearby
       @nearby_users = User.all
+      if @user.latitude && @user.longitude
+        @client = GooglePlaces::Client.new(ENV["GOOGLE_PLACES_API_KEY"])
+        @locations = @client.spots(@user.latitude, @user.longitude, :types => 'cafe', :radius => 300)
+      else
+        @locations = []
+      end
+    end
+
+    def retrieve_location_name(location_place_id)
       @client = GooglePlaces::Client.new(ENV["GOOGLE_PLACES_API_KEY"])
-      @locations = @client.spots(@user.latitude, @user.longitude, :types => 'cafe', :radius => 300)
-      # @locations = []
+      location = @client.spot(location_place_id)
+      return location.name
     end
 end
