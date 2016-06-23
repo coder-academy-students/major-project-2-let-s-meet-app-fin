@@ -8,6 +8,35 @@
   opacity: 0.9;
 }
 
-.jumbotron p {
-  font-size: 30px;
+.jumbotron {
+  p {
+  font-size: 60px;
+}
+
+  h1 {
+    font-size: 100px;
+  }
+}
+
+h5 {
+  color: burlywood;
+}
+
+.background-blue {
+  background-color: #2e6a82;
+}
+
+footer ul {
+  list-style-type: none;
+  padding-left: 0;
+  font-size: 12px;
+}
+
+.social-link > a {
+  font-size: 23px;
+  color: #b2b2b2;
+}
+
+.padding-left-10 {
+  padding-left: 10px;
 }
