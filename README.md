@@ -8,3 +8,12 @@ To create an app that enables someone to meet new friends and doing same thing t
 
 ## Note:
 This app is for free but if someone think this app is good then they can donate.
+
+## Wireframes
+![wireframe 1](https://raw.githubusercontent.com/FinTsai/lets-meet-app/master/docs/Wireframes.png)
+
+![wireframe 2](https://raw.githubusercontent.com/FinTsai/lets-meet-app/master/docs/Wireframes2.png)
+
+![wireframe 3](https://raw.githubusercontent.com/FinTsai/lets-meet-app/master/docs/Wireframe3.png)
+
+Designed and developed by Fin Tsai.
