@@ -383,7 +383,7 @@ MenuItem]]></p:property><p:property name="textFont"><![CDATA['Comic Sans MS'|nor
             <use xlink:href="#2360e873f558d544a10ea9bf00115244" xmlns:xlink="http://www.w3.org/1999/xlink" p:name="outArrow1" id="f04b455d509e6249b5c3128fd72ca925" style="stroke: rgb(102, 102, 102); stroke-opacity: 1; stroke-width: 2;"/>
             <text p:name="text" id="f24cd625a17668418ed556c7fc609984" style="fill: rgb(0, 0, 0); fill-opacity: 1; font-family: Helvetica; font-size: 12px; font-weight: normal; font-style: normal; text-decoration: none;">
                 <textPath xlink:href="#2360e873f558d544a10ea9bf00115244" xmlns:xlink="http://www.w3.org/1999/xlink" startOffset="50%" text-anchor="middle" alignment-baseline="middle">
-                    <tspan dy="-4" p:name="textSpan" id="2f228e2d0b79e04891b485c0f35b2797" dx="-16"></tspan>
+                    <tspan dy="-4" p:name="textSpan" id="2f228e2d0b79e04891b485c0f35b2797" dx="-16"/>
                 </textPath>
             </text>
 
